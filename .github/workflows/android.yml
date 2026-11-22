@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build APK Simples
 
 on:
   workflow_dispatch:
@@ -10,22 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Build Debug APK
+      - name: Preparar Gradle
         run: |
+          if [ ! -f "./gradlew" ]; then
+            gradle wrapper --gradle-version 8.7
+          fi
           chmod +x gradlew
           ./gradlew :aplicativo:assembleDebug --no-daemon
 
-      - name: Upload APK
+      - name: Enviar APK
         uses: actions/upload-artifact@v4
         with:
-          name: DamaBrasileiraAI-debug-apk
+          name: DamaBrasileiraAI-APK
           path: aplicativo/build/outputs/apk/debug/*.apk
+
