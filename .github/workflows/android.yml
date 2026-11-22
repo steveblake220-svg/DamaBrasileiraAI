@@ -15,9 +15,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - run: gradle :app:assembleDebug --no-build-cache
+      - run: gradle :aplicativo:assembleDebug --no-build-cache
       - uses: actions/upload-artifact@v4
         with:
           name: DamaBrasileiraAI-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
-
+          path: aplicativo/build/outputs/apk/debug/*.apk
