@@ -18,10 +18,10 @@ jobs:
           distribution: 'temurin'
       - run: |
           if [ ! -f "./gradlew" ]; then
-            gradle wrapper --gradle-version 8.7 --distribution-type all
+            gradle wrapper --gradle-version 8.9 --distribution-type all
           fi
           chmod +x gradlew
-          ./gradlew assembleDebug --no-build-cache
+          aplicativo:assembleDebug --no-build-cache
       - uses: actions/upload-artifact@v4
         with:
           name: DamaBrasileiraAI-debug-apk
