@@ -21,7 +21,7 @@ jobs:
             gradle wrapper --gradle-version 8.9 --distribution-type all
           fi
           chmod +x gradlew
-          aplicativo:assembleDebug --no-build-cache
+          ​./gradlew :aplicativo:assembleDebug --no-build-cache
       - uses: actions/upload-artifact@v4
         with:
           name: DamaBrasileiraAI-debug-apk
